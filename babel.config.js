@@ -1,5 +1,13 @@
 module.exports = {
   presets: [
-    '@vue/cli-plugin-babel/preset'
-  ]
-}
+      [
+          '@babel/preset-env',
+          {
+              debug: false,
+              targets: {
+                  browsers: ['last 3 versions'],
+              },
+          },
+      ],
+  ],
+};

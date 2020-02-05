@@ -7,7 +7,7 @@
         <ul>
             <li v-for="(task, index) in tasklist" :key="index">
                 <div :class="[task.achieved && 'achieved', 'list-inner']">
-                    <button class="remove-button" @click.prevent="removeTask(index)">
+                    <button :id="'remove'+index" class="remove-button" @click.prevent="removeTask(index)">
                         <FontAwesomeIcon icon="times" />
                     </button>
                     <h3>{{ task.title }}</h3>
@@ -24,8 +24,8 @@
                     </div>
                     <div :class="handleLabel(task.label)"></div>
                     <div class="inner-btn-wrapper">
-                        <button @click.prevent="achieveTask(index)">Achieve</button>
-                        <button @click.prevent="editCurrTask(index)">Edit</button>
+                        <button :id="'achieve'+index" @click.prevent="achieveTask(index)">Achieve</button>
+                        <button :id="'edit'+index" @click.prevent="editCurrTask(index)">Edit</button>
                     </div>
                 </div>
             </li>
@@ -33,7 +33,7 @@
         <div class="btn-wrapper">
             <button id="new-task" @click.prevent="popCreateModal">New Task</button>
         </div>
-        <CreateModal
+         <CreateModal
             v-if="createModal"
             :addTask="addTask"
             :toggleModal="popCreateModal"
@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import CreateModal from "./CreateModal";
-import { renderLabel, renderDate, renderDueDate, renderParseDate } from "../assets/helper.js";
+ import CreateModal from "./CreateModal.vue";
+import { renderLabel, renderDate, renderDueDate, renderStringifyDate, renderParseDate } from "../assets/helper.js";
 import { dummyTasks } from "../assets/general.json";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -155,6 +155,9 @@ export default {
         handleDueDate(date) {
             return renderDueDate(date);
         },
+        handleStringifyDate(tasks) {
+            return renderStringifyDate(tasks);
+        },
         handleParseDate(tasks) {
             return renderParseDate(tasks);
         }
@@ -163,7 +166,7 @@ export default {
         this.getTasksFromStorage();
     },
     components: {
-        CreateModal,
+         CreateModal,
         FontAwesomeIcon
     }
 };

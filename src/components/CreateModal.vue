@@ -54,9 +54,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import DatePicker from "v-calendar/lib/components/date-picker.umd";
-
 library.add(faTimes);
-
 export default {
     name: "CreateModal",
     data: () => ({
@@ -96,9 +94,7 @@ export default {
                 errorArr.forEach(eachError => !eachError.errorCheck && this.emphasizeError(eachError.name));
                 return;
             }
-
             this.formValidate();
-
             if (!validationChecker(this.validation)) {
                 return;
             }
@@ -115,7 +111,6 @@ export default {
                 const dueDateValidate = dueDate.getDate() >= new Date().getDate();
                 !dueDateValidate ? (this.validation.date = false) : (this.validation.date = true);
             }
-
             !title.length ? (this.validation.title = false) : (this.validation.title = true);
             !detail.length ? (this.validation.detail = false) : (this.validation.detail = true);
         },
