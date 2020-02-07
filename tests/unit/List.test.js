@@ -1,8 +1,7 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import App from "../App.vue"
-import List from "../components/List.vue";
-import { dummyTasks } from "../assets/general.json";
-import CreateModal from "../components/CreateModal.vue"
+import List from "../../src/components/List.vue";
+import { dummyTasks } from "../../src/assets/general.json";
+import CreateModal from "../../src/components/CreateModal.vue"
 
 const getSampleData = () => {
     dummyTasks.forEach(task => task.dueDate && (task.dueDate = new Date(task.dueDate)));

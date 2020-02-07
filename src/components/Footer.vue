@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <button id="handleSampleData" @click.prevent="handleSampleData">Get Example Todos</button>
-        <button @click.prevent="removeExampleView">Remove Examples</button>
+        <button id="RemoveExamples"  @click.prevent="removeExampleView">Remove Examples</button>
     </div>
 </template>
 

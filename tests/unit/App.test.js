@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import App from "../App.vue"
-import Footer from "../components/Footer.vue";
+import App from "../../src/App.vue"
+import Footer from "../../src/components/Footer.vue";
 
 describe("App.vue", () => {
     test("Render view properly", () =>{
